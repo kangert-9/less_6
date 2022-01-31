@@ -1,5 +1,6 @@
 package ru.geekbrains.mvpuser
 
+import android.util.Log
 import moxy.MvpPresenter
 import ru.geekbrains.data.GitHubUserRepository
 import ru.geekbrains.navigation.CustomRouter
@@ -26,9 +27,6 @@ class UserPresenter(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 viewState.showUser(it)
-            },{
-                val errorMessage = it.message
-                //DisplayError
-            })
+            },{e-> Log.d("error", e.message.toString())})
     }
 }
